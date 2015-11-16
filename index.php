@@ -1,3 +1,15 @@
+<?php
+	require( "config.php" );
+	try {
+		if ( !is_null( $e = update_database() ) ) {
+			$api->error($e);
+		}
+	} catch (Exception $e) {
+
+	} finally {
+
+	}
+?>
 <!DOCTYPE html>
 <html>
   <head>
