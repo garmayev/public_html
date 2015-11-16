@@ -4,6 +4,6 @@
     <title>Local site</title>
   </head>
   <body>
-    <?php phpinfo(); ?>
+    Where Am I?
   </body>
 </html>
