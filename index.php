@@ -1,7 +1,10 @@
 <?php
-	require( "config.php" );
+	require ( "class/api.php" );
+	require ( "config.php" );
+	$api = new API();
 	try {
-		if ( !is_null( $e = update_database() ) ) {
+		if ( is_null( $e = update_database() ) ) {
+			var_dump($e);
 			$api->error($e);
 		}
 	} catch (Exception $e) {
