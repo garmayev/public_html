@@ -5,7 +5,7 @@
 		}
 
 		public function index($data) {
-			var_dump($data);
+			
 		}
 	}
 ?>

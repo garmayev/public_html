@@ -2,6 +2,7 @@
 	class API {
 // Назначаем модуль и действие по умолчанию.
 // Массив параметров из URI запроса.  
+		public $template = null;
 		public $module = 'Not_Found';
 		public $action = 'main';
 		public $params = array();
@@ -10,6 +11,15 @@
 		public function __construct( $request ) {
 			$this->pdo = new PDO(DRIVER.":host=".HOST.";dbname=".BASE, USER, PASS);
 			$this->routes($request);
+			$this->template = $this->getTemplate();
+		}
+
+		public function getTemplate() {
+			$sth = $this->pdo->prepare("SELECT * FROM `config` WHERE `active` = 1 AND `param`='template';");
+			if ( $sth->execute() ) {
+				$t = $sth->fetchAll(PDO::FETCH_ASSOC);
+				return $t[0]["value"];
+			}
 		}
 
 		protected function routes($request) {
