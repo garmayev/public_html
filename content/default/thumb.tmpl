@@ -1,0 +1,46 @@
+<div class="two-fourth">
+{% if (thumbnails) %}
+    <h4>Мои некоторые <span>статьи</span></h4>
+
+    <!-- START LAST NEWS -->
+        <div class="last-news group">
+        {% for thumb in thumbnails %}
+            <div class="box-post group thumbnail">
+                <div class="box-post-thumb sphere">
+                    <img width="86" height="86" src="{{path}}{{thumb.images}}" alt="glasses" title="glasses" />
+                </div>
+                <div class="box-post-body group">
+                    <div class="news_title">
+                        <a class="title" href="/article/id{{thumb.id}}.html" title="{{thumb.title}}">{{thumb.title}}</a>
+                    </div>
+                    <div class="news_excerpt">
+                        <p>{{thumb.small}}</p>
+                    </div>
+                    <p class="meta"><span class="date">{{thumb.date}}</span><span class="author">by {{thumb.author}}</span></p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- END LAST NEWS -->
+    </div>
+{% endif %}
+{% if (slider) %}
+    <div class="two-fourth last">
+        <h4>Хороший <span>слайдер</span></h4>
+        <!-- START WORKS SLIDER -->
+        <div class="works-slider flexslider">
+        <ul class="slides">
+        {% for slide in slider %}
+            <li class="box-work">
+                <a href="/work/id{{slide.id}}.html">
+                    <div class="box-work-thumb"><img src="{{path}}{{slide.img}}" alt="" /></div>
+                </a>
+                <div class="box-work-body">
+                    <h4><a href="/work/id{{slide.id}}.html">{{slide.title}}</a></h4><p class="categories"><a href="#" rel="tag">{{slide.text}}</a></p>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+</div>

@@ -46,8 +46,8 @@ img { border:0 }
 
 /* Main Layout */
 
-html { min-height:100% }
-body { font-family:Calibri, 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Tahoma, Arial, san-serif; font-size:14px; line-height:1.8em; }
+html { min-height:100%;height: 100%; }
+body { font-family:Calibri, 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Tahoma, Arial, san-serif; font-size:14px; line-height:1.8em; min-height:100%;height: 100%; }
 
 /* typography */
 p, li, address, dd, blockquote { color:#545252; font-size:1em; line-height:1.61em } 
@@ -81,9 +81,10 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: 
 .space { height:45px }                                   
 .border-line { height:1px; background:#ddd; width:100%; clear:both; margin:1.2em 0; }
 body .last, body .widget-last { margin-right:0; border-right:0; }
- 
-.shadowBg {background:url('images/shadow.png') center 10px no-repeat;}
-.wrapper { width:960px; margin:0 auto; /* main width */ background-color:#FFF; margin-top:40px; margin-bottom:20px; }
+
+.home {} 
+.shadowBg {background:url('images/shadow.png') center 10px no-repeat; }
+.wrapper { width:960px; margin:0 auto; /* main width */ background-color:#FFF; margin-top:40px; margin-bottom:0px; }
 .responsive .wrapper { max-width:960px; width:auto; overflow:hidden; }
 .wrapper ul{list-style-position:inside;}
 
@@ -411,7 +412,7 @@ a:hover {color:#1a1a1a;}
 #footer.columns-4 .footer-main .widget { width:22.872%; }
 #footer.columns-5 .footer-main .widget { width:17.872%; }
 
-#copyright{background-color:#a09f9f;}
+#copyright{background-color:#a09f9f; width:960px; margin: 0 auto; }
 #copyright p {margin:0; padding:13px 20px; font-size:12px; color:#131313; line-height:27px; }
 
 #copyright a, #copyright a:visited{color:#000; text-decoration:none;}

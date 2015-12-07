@@ -1,0 +1,11 @@
+<!-- START NAV -->
+<div id="nav" class="group">
+    <ul class="level-1 white">
+{% for item in menu %}
+        <li class="{{item.class}}">
+            <a href="{{item.link}}">{{item.item}}</a>
+        </li>
+{% endfor %}
+    </ul>
+</div>
+<!-- END NAV -->   

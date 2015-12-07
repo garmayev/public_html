@@ -2,16 +2,25 @@
 	class API {
 // Назначаем модуль и действие по умолчанию.
 // Массив параметров из URI запроса.  
-		public $template = null;
-		public $module = 'Not_Found';
-		public $action = 'main';
+		public $link = null;
+		public $module = 'Error';
+		public $action = 'err_404';
 		public $params = array();
+		public $template = null;
 		protected $pdo = null;
 
 		public function __construct( $request ) {
 			$this->pdo = new PDO(DRIVER.":host=".HOST.";dbname=".BASE, USER, PASS);
+			$this->pdo->query("SET NAMES utf8");
 			$this->routes($request);
 			$this->template = $this->getTemplate();
+		}
+
+		public function getMenu() {
+			$sth = $this->pdo->prepare("SELECT * FROM `menu`;");
+			if ( $sth->execute() ) {
+				return $sth->fetchAll(PDO::FETCH_ASSOC);
+			}
 		}
 
 		public function getTemplate() {
@@ -23,7 +32,7 @@
 		}
 
 		protected function routes($request) {
-			$sth = $this->pdo->query("SELECT * FROM `routes`;");
+			$sth = $this->pdo->query("SELECT * FROM `".BASE."`.`routes`;");
 			if ( $sth->execute() ) {
 				$routes = $sth->fetchAll(PDO::FETCH_ASSOC);
 			} else {
@@ -37,7 +46,7 @@
 	// случае виртуальный адрес попросту не совпадет ни с одним паттерном из массива $routes.
 	// Данные, переданные через QUERY_STRING, также как и раньше будут содержаться в
 	// суперглобальных массивах $_GET и $_REQUEST.
-					$url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+					$this->link = $url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	  
 					if (preg_match($map['pattern'], $url_path, $matches)) {
 	// Выталкиваем первый элемент - он содержит всю строку URI запроса

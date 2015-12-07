@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{page.title}}</title>
+		<link rel="stylesheet" type="text/css" href="{{path}}css/style.css">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+	</head>
+<body>
+	<div id="wrapper">
+		<div id="content">
+			<div id="header">Garmayev Group</div>
+{%	include 'nav.tmpl' %}
+			<div id="main">
+				<div id="left">
+					{{page.content}}
+				</div>
+				<div id="right"></div>
+			</div>
+		</div>
+		<div id="footer">Copyright &copy; <a href="http://garmayev.ru/">Garmayev Group</a> | 2015</div>
+	</div>
+</body>
+</html>
