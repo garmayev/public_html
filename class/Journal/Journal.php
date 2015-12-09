@@ -4,16 +4,22 @@
 
 		}
 
+		public function getDate() {
+
+		}
+
 		public function index($data) {
 			$api = new API($_SERVER["REQUEST_URI"]);
-			return array(
-					"page" =>array(
-						"title"=>"Garmayev Group",
-						"header"=>"Журнал",
-						"content"=>"Система учета посещаемости занятий студентами"),
+			if ( isset($_SESSION["user"]) ) {
+				$this->getDate();
+			} else {
+				return 	array(
+					"page" => $api->user->auth(),
 					"path" => "/content/".$api->template."/", 
 					"menu" => $api->getMenu(), 
-					);
+					"active" => $api->link,
+				);
+			}
 		}
 	}
 ?>

@@ -3,6 +3,7 @@
 // Назначаем модуль и действие по умолчанию.
 // Массив параметров из URI запроса.  
 		public $link = null;
+		public $user = null;
 		public $module = 'Error';
 		public $action = 'err_404';
 		public $params = array();
@@ -10,6 +11,7 @@
 		protected $pdo = null;
 
 		public function __construct( $request ) {
+			$this->user = new User();
 			$this->pdo = new PDO(DRIVER.":host=".HOST.";dbname=".BASE, USER, PASS);
 			$this->pdo->query("SET NAMES utf8");
 			$this->routes($request);
